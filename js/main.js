@@ -42,8 +42,6 @@ films.forEach(el => genres.push(...el.genres));
 
 let genresList = new Set(genres);
 
-console.log(genresList);
-
 genresList.forEach(el => {
   let newOption = document.createElement('option');
   newOption.textContent = el;
@@ -59,6 +57,42 @@ elSelect.addEventListener('change',function(){
       newResult.push(item)
       renderToHTML(newResult,elList)
     }
+  }
+})
+
+
+// ----------------- SORT ------------------
+
+let elSort = document.querySelector('.js-sort');
+
+function azSort(){
+  const sortedValue = films.sort((a,b) => {
+    if(a.title < b.title){
+      return -1
+    } else {
+      return 1
+    }
+  })
+  renderToHTML(sortedValue,elList)
+}
+
+function zaSort(){
+  const reverseSorted = films.sort((a,b) => {
+    if(a.title < b.title){
+      return 1
+    } else {
+      return -1
+    }
+  })
+  renderToHTML(reverseSorted,elList)
+}
+
+elSort.addEventListener('change',function(){
+  let sortValue = elSort.value;
+  if(sortValue == 'A - Z'){
+    azSort()
+  } else {
+    zaSort()
   }
 })
 
