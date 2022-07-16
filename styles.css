@@ -14,6 +14,42 @@ body {
   max-width: 1440px;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+a {
+  position: relative;
+  text-decoration: none;
+}
+
+.logo-text {
+  display: inline-block;
+  margin: 15px 0;
+  font-family: 'Black Ops One', cursive;
+  font-size: 100px;
+  color: #fff;
+}
+
+.logo-reel {
+  position: absolute;
+  top: 20px;
+  left: 270px;
+  width: 100px;
+  height: 100px;
+}
+
+.js-selection {
+  padding: 10px 20px;
+  outline: none;
+  box-shadow: 0px 0px 25px #00AD9F;
+  border-radius: 5px;
+  font-family: 'Mukta', sans-serif; 
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;

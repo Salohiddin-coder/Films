@@ -34,9 +34,33 @@ function renderToHTML(array,node){
 
 renderToHTML(films,elList)
 
+let elSelect = document.querySelector('.js-selection');
 
+let genres = [];
 
+films.forEach(el => genres.push(...el.genres));
 
+let genresList = new Set(genres);
+
+console.log(genresList);
+
+genresList.forEach(el => {
+  let newOption = document.createElement('option');
+  newOption.textContent = el;
+  elSelect.appendChild(newOption)
+})
+
+elSelect.addEventListener('change',function(){
+  let newResult = [];
+  elList.innerHTML = '';
+  let selectionValue = elSelect.value;
+  for(item of films){
+    if(item.genres.includes(selectionValue)){
+      newResult.push(item)
+      renderToHTML(newResult,elList)
+    }
+  }
+})
 
 
 
