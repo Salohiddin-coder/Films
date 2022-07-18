@@ -8,6 +8,7 @@ body {
 }
 
 .container {
+  position: relative;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
@@ -108,4 +109,54 @@ img {
   font-size: 18px;
   color: #01b5fc;
   text-align: center;
+}
+
+.js-bookmark {
+  padding: 5px 20px;
+  outline: none;
+  width: 155px;
+  height: 50px;
+  box-shadow: 0px 0px 25px #00AD9F;
+  border-radius: 5px;
+  font-family: 'Mukta', sans-serif; 
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #01b5fc;
+  transition: all 0.2s ease;
+}
+
+.js-bookmark:hover {
+  padding: 1px 8px;
+  cursor: pointer;
+  font-size: 28px;
+}
+
+.js-bookmark:active {
+  opacity: 0.5;
+}
+
+.js-modal {
+  margin-top: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Mukta', sans-serif; 
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.js-modal:hover {
+  cursor: pointer;
+  box-shadow: #01b5fc 0px 0px 30px -5px;
+  color: #fff;
+  background-color: #01b5fc;
+}
+
+.js-modal-box {
+  position: absolute;
+  top: 0;
+  right: calc(50% - 150px);  
+  width: 300px;
+  background-color: #fff;
 }
