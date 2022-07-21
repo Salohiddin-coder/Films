@@ -1,4 +1,5 @@
 body {
+  position: relative;
   margin: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -8,7 +9,6 @@ body {
 }
 
 .container {
-  position: relative;
   margin: 0 auto;
   padding: 0 20px;
   width: 100%;
@@ -154,9 +154,83 @@ img {
 }
 
 .js-modal-box {
+  display: none;
   position: absolute;
   top: 0;
-  right: calc(50% - 150px);  
-  width: 300px;
-  background-color: #fff;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 1s ease-in-out;
+}
+
+.js-modal-box-open {
+  display: block;
+  transition: all 1s ease-in-out;
+}
+
+.modal-list {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.modal-wrapper {
+  position: fixed;
+  z-index: 999;
+  top: 50px;
+  left: calc(50% - 250px);
+  margin: 200px auto;
+  padding: 20px;
+  font-size: 18px;
+  text-align: center;
+  width: 500px;
+  color: #fff;
+  box-shadow: 0px 0px 500px 100px #00AD9F;
+  background-color: #151A1E;
+  animation: fade-in-up 1s ;
+}
+
+.modal-button {
+  padding: 5px 15px;
+  margin-top: 10px;
+  font-family: 'Mukta',sans-serif;
+  box-shadow: 0px 0px 25px #00AD9F;
+  border-radius: 5px;
+  border: none;
+}
+
+.modal-button:hover {
+  cursor: pointer;
+  background-color: #01b5fc;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.bookmark-button {
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Mukta', sans-serif; 
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.bookmark-button:hover {
+  cursor: pointer;
+  box-shadow: #01b5fc 0px 0px 30px -5px;
+  color: #fff;
+  background-color: #01b5fc;
+}
+
+@keyframes fade-in-up {
+  0% {
+      opacity: 0;
+      transform: translateY(-80px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateY(0);
+  }
 }

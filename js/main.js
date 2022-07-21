@@ -4,7 +4,7 @@ let elList = document.querySelector('.js-list');
 
 function renderToHTML(array,node){
   elList.innerHTML = "";
-  for(let i = 0; i < array.length; i++){
+  for(film of array){
     elList.className = 'list'
     let newItem = document.createElement('li');
     let newList = document.createElement('ul');
@@ -14,20 +14,23 @@ function renderToHTML(array,node){
     let itemImg = document.createElement('li');
     let itemPic = document.createElement('img');
     itemImg.appendChild(itemPic);
-    itemPic.src = array[i].poster;
+    itemPic.src = film.poster;
     newList.appendChild(itemImg);
     let itemTitle = document.createElement('li');
     itemTitle.className = 'films-name';
-    itemTitle.textContent = array[i].title;
+    itemTitle.textContent = film.title;
     newList.appendChild(itemTitle);
-    let itemInfo = document.createElement('li');
-    itemInfo.className = 'films-info';
-    itemInfo.textContent = array[i].overview;
-    newList.appendChild(itemInfo);
+    let itemModal = document.createElement('li');
     let itemButtonModal = document.createElement('button');
     itemButtonModal.className = 'js-modal';
+    itemButtonModal.dataset.filmId = film.id;
     itemButtonModal.textContent = 'More info';
-    newList.appendChild(itemButtonModal);
+    itemModal.appendChild(itemButtonModal);
+    newList.appendChild(itemModal);
+    let bookmarkButton = document.createElement('button');
+    bookmarkButton.className = 'bookmark-button';
+    bookmarkButton.textContent = 'Bookmark';
+    itemModal.appendChild(bookmarkButton)
     
     node.appendChild(newItem);
   }
@@ -104,52 +107,51 @@ elSort.addEventListener('change',function(){
 let elModal = document.querySelector('.js-modal-box');
 
 function modalCreator(object,node){
-  let modalList = document.createElement('ul');
-  modalList.className = 'modal-list';
-  modalList.id = object.number;
-  let modalName = document.createElement('li');
-  modalName.textContent = object.title;
-  modalName.classList = 'modal-name';
-  modalList.appendChild(modalName);
-  let modalInfo = document.createElement('li');
-  modalInfo.className = 'modal-info';
-  modalInfo.textContent = object.overview;
-  modalList.appendChild(modalInfo);
-  let modalClose = document.createElement('li');
-  let modalCloseButton = document.createElement('button');
-  modalCloseButton.className = 'modal-button';
-  modalCloseButton.textContent = 'Close';
-  modalClose.appendChild(modalCloseButton);
-  modalList.appendChild(modalClose);
-
-  node.appendChild(modalList)
+  for(item of object){
+    let modalWrapper = document.createElement('div');
+    modalWrapper.className = 'modal-wrapper';
+    let modalList = document.createElement('ul');
+    modalList.className = 'modal-list';
+    let modalName = document.createElement('li');
+    modalName.textContent = item.title;
+    modalName.classList = 'modal-name';
+    modalList.appendChild(modalName);
+    let modalInfo = document.createElement('li');
+    modalInfo.className = 'modal-info';
+    modalInfo.textContent = item.overview;
+    modalList.appendChild(modalInfo);
+    let modalClose = document.createElement('li');
+    let modalCloseButton = document.createElement('button');
+    modalClose.appendChild(modalCloseButton);
+    modalCloseButton.className = 'modal-button';
+    modalCloseButton.textContent = 'Close';
+    modalList.appendChild(modalClose);
+    modalWrapper.appendChild(modalList);
+    node.appendChild(modalWrapper)
+  }
 } 
 
-films.number = 1;
-
-films.map((el,index) => el.number = index + 1)
-
-elList.addEventListener('click',function(evt){
+elList.addEventListener('click', function(evt){
   if(evt.target.className == 'js-modal'){
-    films.forEach(el => {
-      if(el.number == modalList.id){
-        modalCreator(el,elModal)
-      } else {
-        console.log(modalList.id);
-      }
-    })
-  } else {
-    console.log('2');
+    elModal.innerHTML = ""
+    let elementId = evt.target.dataset.filmId;
+    
+    let findedFilms = films.filter(el => el.id == elementId);
+    
+    elModal.classList.add('js-modal-box-open')
+    
+    modalCreator(findedFilms,elModal);
   }
 })
 
-obj = {
-  number: 1,
-  title: 'Dfgtresxcvbgf',
-  overview: 'sdfdgfbdfv'
-}
+elModal.addEventListener('click', function(evt){
+  if(evt.target.className == 'modal-button'){
+    elModal.classList.remove('js-modal-box-open')
+  }
+})
 
-modalCreator(obj,elModal)
+
+
 
 
 
