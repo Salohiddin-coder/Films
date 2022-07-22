@@ -141,6 +141,9 @@ elList.addEventListener('click', function(evt){
     elModal.classList.add('js-modal-box-open')
     
     modalCreator(findedFilms,elModal);
+  } else if(evt.target.className == 'bookmark-button'){
+    let mookmarkedFilms = [];
+
   }
 })
 
@@ -149,6 +152,12 @@ elModal.addEventListener('click', function(evt){
     elModal.classList.remove('js-modal-box-open')
   }
 })
+
+// ----------------------- BOOKMARK FUNCTION ------------------------
+
+function(array,node){
+  
+}
 
 
 
