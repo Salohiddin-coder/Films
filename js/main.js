@@ -155,9 +155,9 @@ elModal.addEventListener('click', function(evt){
 
 // ----------------------- BOOKMARK FUNCTION ------------------------
 
-function(array,node){
-  
-}
+// function(array,node){
+
+// }
 
 
 
